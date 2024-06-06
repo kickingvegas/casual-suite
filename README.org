@@ -68,5 +68,5 @@ If you enjoy using Casual Suite, consider making a modest financial contribution
 [[https://www.buymeacoffee.com/kickingvegas][file:docs/images/default-yellow.png]]
   
 * Acknowledgments
-A heartfelt thanks to all the contributors to Calc, Dired, Info, I-Search, Info, and Transit. Casual Suite would not be possible without your efforts.
+A heartfelt thanks to all the contributors to Calc, Dired, Info, I-Search, Info, Avy, and Transit. Casual Suite would not be possible without your efforts.
 
