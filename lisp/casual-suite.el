@@ -5,7 +5,7 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
-;; Version: 0.1.0
+;; Version: 0.1.1
 ;; Package-Requires: ((casual "1.5.0")
 ;;                    (cc-isearch-menu "1.4.1")
 ;;                    (casual-dired "1.2.0")
