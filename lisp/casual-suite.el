@@ -6,7 +6,7 @@
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
 ;; Version: 1.0.3
-;; Package-Requires: ((casual "1.5.0") (cc-isearch-menu "1.4.1") (casual-dired "1.2.0") (casual-avy "1.0.5") (casual-info "1.0.3") (emacs "29.1"))
+;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-avy "1.2.0") (casual-info "1.2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,8 +26,8 @@
 ;; An umbrella package to support a single installation point for all Casual
 ;; porcelains. Included are porcelains for the following packages:
 
-;; - Calc (casual)
-;; - I-Search (cc-isearch-menu)
+;; - Calc (casual-calc)
+;; - I-Search (casual-isearch)
 ;; - Dired (casual-dired)
 ;; - Avy (casual-avy)
 ;; - Info (casual-info)
@@ -49,11 +49,11 @@
 
 ;;; Code:
 
-(require 'casual)
+(require 'casual-calc)
 (require 'casual-dired)
 (require 'casual-avy)
 (require 'casual-info)
-(require 'cc-isearch-menu)
+(require 'casual-isearch)
 
 (defun casual-suite-about-suite ()
   "Casual Suite is a collection of all Casual porcelains.
@@ -61,9 +61,10 @@
 This is an umbrella package that collects all the Casual packages.
 Included are porcelains for the following packages:
 
-- Calc (Casual)
-- I-Search (cc-isearch-menu)
+- Calc (Casual Calc)
+- I-Search (Casual I-Search)
 - Dired (Casual Dired)
+- Info (Casual Info)
 - Avy (Casual Avy)
 
 Learn more about using Casual Suite at our discussion group on GitHub.

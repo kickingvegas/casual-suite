@@ -1,11 +1,11 @@
 * Casual Suite
 An umbrella package to support a single installation point for all Casual porcelains. These porcelains are included via the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][Elisp library header]] ~Package-Requires~. Included porcelains are:
 
-- [[https://github.com/kickingvegas/casual][Casual Calc]] - a Transient porcelain for Emacs Calc.
+- [[https://github.com/kickingvegas/casual-isearch][Casual I-Search]] - a Transient menu for I-Search.
 - [[https://github.com/kickingvegas/casual-dired][Casual Dired]] - a Transient porcelain for the Emacs file manager Dired.
-- [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient porcelain for Avy.
 - [[https://github.com/kickingvegas/casual-info][Casual Info]] - a Transient porcelain for Info.  
-- [[https://github.com/kickingvegas/cc-isearch-menu][cc-isearch-menu]] - a Transient menu for I-Search.
+- [[https://github.com/kickingvegas/casual-calc][Casual Calc]] - a Transient porcelain for Emacs Calc.
+- [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient porcelain for Avy.
 
 * Requirements
 Casual Suite has been verified with the following configuration. 
@@ -17,16 +17,16 @@ As Casual Suite is new, we are looking for early adopters! Your [[https://github
 * Install
 It is highly recommended that a deep reading of the install procedure for each porcelain be done beforehand as each of them have their own recommended customizations to go alongside them. Such customizations ensure that you have the best experience with each porcelain.
 
-- [[https://github.com/kickingvegas/casual?tab=readme-ov-file#install][Casual Calc]]
+- [[https://github.com/kickingvegas/casual-isearch?tab=readme-ov-file#install][Casual I-Search]]
 - [[https://github.com/kickingvegas/casual-dired?tab=readme-ov-file#install][Casual Dired]] 
-- [[https://github.com/kickingvegas/casual-avy?tab=readme-ov-file#install][Casual Avy]] 
 - [[https://github.com/kickingvegas/casual-info?tab=readme-ov-file#install][Casual Info]] 
-- [[https://github.com/kickingvegas/cc-isearch-menu?tab=readme-ov-file#install][cc-isearch-menu]]
+- [[https://github.com/kickingvegas/casual-calc?tab=readme-ov-file#install][Casual Calc]]
+- [[https://github.com/kickingvegas/casual-avy?tab=readme-ov-file#install][Casual Avy]] 
 
 ** TL;DR
 Impatient readers can use the following code to put into their Emacs initialization file to immediately use Casual Suite. 
 
-The following lines illustrate an installation of the Casual Suite with no customization. 
+The following lines illustrate an installation of the Casual Suite with no customization. The key bindings shown below are suggested but can always be changed to preference.
 
 #+begin_src elisp :lexical no
   (require 'casual-suite)
@@ -34,32 +34,32 @@ The following lines illustrate an installation of the Casual Suite with no custo
   (define-key dired-mode-map (kbd "C-o") #'casual-dired-tmenu)
   (define-key info-mode-map (kbd "C-o") #'casual-info-tmenu)
   (keymap-global-set "M-g" #'casual-avy-tmenu)
-  (define-key isearch-mode-map (kbd "<f2>") #'cc-isearch-menu-transient)
+  (define-key isearch-mode-map (kbd "<f2>") #'casual-isearch-tmenu)
 #+end_src
 
 For an alternate install using ~use-package~:
 
 #+begin_src elisp :lexical no
-  (require 'casual-suite)
-  (use-package casual
-    :ensure t
-    :bind (:map calc-mode-map ("C-o" . 'casual-calc-tmenu)))
+   (require 'casual-suite)
+   (use-package casual-calc
+     :ensure t
+     :bind (:map calc-mode-map ("C-o" . casual-calc-tmenu)))
 
-  (use-package casual-info
-    :ensure t
-    :bind (:map Info-mode-map ("C-o" . 'casual-info-tmenu)))
+   (use-package casual-info
+     :ensure t
+     :bind (:map Info-mode-map ("C-o" . casual-info-tmenu)))
 
-  (use-package casual-dired
-    :ensure t
-    :bind (:map dired-mode-map ("C-o" . 'casual-dired-tmenu)))
+   (use-package casual-dired
+     :ensure t
+     :bind (:map dired-mode-map ("C-o" . casual-dired-tmenu)))
 
-  (use-package casual-avy
-    :ensure t
-    :bind ("M-g" . casual-avy-tmenu))
+   (use-package casual-avy
+     :ensure t
+     :bind ("M-g" . casual-avy-tmenu))
 
-  (use-package cc-isearch-menu
-    :ensure t
-    :bind (:map isearch-mode-map ("<f2>" . 'cc-isearch-menu-transient)))
+   (use-package casual-isearch
+     :ensure t
+     :bind (:map isearch-mode-map ("<f2>" . casual-isearch-tmenu)))
 #+end_src
 
 * Sponsorship
