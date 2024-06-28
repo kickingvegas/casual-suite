@@ -65,7 +65,8 @@ create-merge-development-branch			\
 create-pr					\
 create-release-pr				\
 create-release-tag				\
-create-gh-release
+create-gh-release				\
+status
 
 ## Run test regression
 tests:
@@ -124,3 +125,6 @@ create-release-tag: checkout-main
 
 create-gh-release: create-release-tag
 	gh release create -t v$(VERSION) --notes-from-tag $(VERSION)
+
+status:
+	git status

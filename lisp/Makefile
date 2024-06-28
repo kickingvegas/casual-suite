@@ -30,14 +30,19 @@ ELISP_PACKAGES=
 ELISP_TEST_INCLUDES=casual-suite-test-utils.el
 PACKAGE_NAME=casual-suite
 CASUAL_BASE_DIR=$(HOME)/Projects/elisp
+CASUAL_LIB_DIR=$(CASUAL_BASE_DIR)/casual-lib
+CASUAL_LIB_LISP_DIR=$(CASUAL_LIB_DIR)/lisp
+CASUAL_LIB_TEST_INCLUDES=$(CASUAL_LIB_DIR)/tests/casual-lib-test-utils.el
 EMACS_CONFIG_DIR=$(HOME)/.config/emacs
 AVY_DIR=$(EMACS_CONFIG_DIR)/elpa/avy-20230420.404
-PACKAGE_PATHS=-L $(CASUAL_BASE_DIR)/casual/lisp	\
+PACKAGE_PATHS=-L $(AVY_DIR)		\
+-L $(CASUAL_LIB_LISP_DIR) \
+-L $(CASUAL_BASE_DIR)/casual-calc/lisp		\
 -L $(CASUAL_BASE_DIR)/casual-avy/lisp		\
 -L $(CASUAL_BASE_DIR)/casual-info/lisp		\
 -L $(CASUAL_BASE_DIR)/casual-dired/lisp		\
--L $(CASUAL_BASE_DIR)/cc-isearch-menu		\
--L $(AVY_DIR)
+-L $(CASUAL_BASE_DIR)/casual-isearch		\
+
 
 .PHONY: tests compile regression
 
@@ -48,12 +53,13 @@ PACKAGE_PATHS=-L $(CASUAL_BASE_DIR)/casual/lisp	\
 -f batch-byte-compile $<
 
 .el.elt :
-	$(EXEC_NAME) -Q --batch \
-$(PACKAGE_PATHS) \
-$(patsubst %, -l %, $(ELISP_INCLUDES)) \
--l $< \
--l $(patsubst %, ../tests/%, $(ELISP_TEST_INCLUDES)) \
--l $(patsubst %, ../tests/test-%, $<) \
+	$(EXEC_NAME) -Q --batch				\
+$(PACKAGE_PATHS)					\
+$(patsubst %, -l %, $(ELISP_INCLUDES))			\
+-l $<							\
+-l $(CASUAL_LIB_TEST_INCLUDES)				\
+-l $(patsubst %, ../tests/%, $(ELISP_TEST_INCLUDES))	\
+-l $(patsubst %, ../tests/test-%, $<)			\
 -f ert-run-tests-batch-and-exit
 
 tests: $(ELISP_PACKAGES:.el=.elt) $(ELISP_INCLUDES:.el=.elt) $(PACKAGE_NAME).elt
@@ -61,18 +67,20 @@ tests: $(ELISP_PACKAGES:.el=.elt) $(ELISP_INCLUDES:.el=.elt) $(PACKAGE_NAME).elt
 compile: $(ELISP_PACKAGES:.el=.elc) $(ELISP_INCLUDES:.el=.elc) $(PACKAGE_NAME).elc
 
 $(PACKAGE_NAME).elc: $(PACKAGE_NAME).el
-	$(EXEC_NAME) -Q --batch $(patsubst %, -l %, $(ELISP_INCLUDES)) \
-$(patsubst %, -l %, $(ELISP_PACKAGES)) \
+	$(EXEC_NAME) -Q --batch $(patsubst %, -l %, $(ELISP_INCLUDES))	\
+$(patsubst %, -l %, $(ELISP_PACKAGES))					\
+$(PACKAGE_PATHS)							\
 -f batch-byte-compile $<
 
 $(PACKAGE_NAME).elt: $(PACKAGE_NAME).el
-	$(EXEC_NAME) -Q --batch \
-$(PACKAGE_PATHS) \
-$(patsubst %, -l %, $(ELISP_INCLUDES)) \
-$(patsubst %, -l %, $(ELISP_PACKAGES)) \
--l $< \
--l ../tests/$(ELISP_TEST_INCLUDES) \
--l $(patsubst %, ../tests/test-%, $<) \
+	$(EXEC_NAME) -Q --batch			\
+$(PACKAGE_PATHS)				\
+$(patsubst %, -l %, $(ELISP_INCLUDES))		\
+$(patsubst %, -l %, $(ELISP_PACKAGES))		\
+-l $<						\
+-l $(CASUAL_LIB_TEST_INCLUDES)			\
+-l ../tests/$(ELISP_TEST_INCLUDES)		\
+-l $(patsubst %, ../tests/test-%, $<)		\
 -f ert-run-tests-batch-and-exit
 
 regression: clean compile tests

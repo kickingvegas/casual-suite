@@ -1,5 +1,5 @@
 * Casual Suite
-An umbrella package to support a single installation point for all Casual porcelains. These porcelains are included via the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][Elisp library header]] ~Package-Requires~. Included porcelains are:
+An umbrella package to support a single installation point for all Casual porcelains. These porcelains built with [[https://github.com/magit/transient][Transient]] are included via the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][Elisp library header]] ~Package-Requires~. Included porcelains are:
 
 - [[https://github.com/kickingvegas/casual-isearch][Casual I-Search]] - a Transient menu for I-Search.
 - [[https://github.com/kickingvegas/casual-dired][Casual Dired]] - a Transient porcelain for the Emacs file manager Dired.
@@ -68,5 +68,4 @@ If you enjoy using Casual Suite, consider making a modest financial contribution
 [[https://www.buymeacoffee.com/kickingvegas][file:docs/images/default-yellow.png]]
   
 * Acknowledgments
-A heartfelt thanks to all the contributors to Calc, Dired, Info, I-Search, Info, Avy, and Transit. Casual Suite would not be possible without your efforts.
-
+A heartfelt thanks to all the contributors to Calc, Dired, Info, I-Search, Info, Avy, and [[https://github.com/magit/transient][Transient]]. Casual Suite would not be possible without your efforts.
