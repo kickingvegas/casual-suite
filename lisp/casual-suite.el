@@ -6,7 +6,7 @@
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
 ;; Version: 1.1.2
-;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-avy "1.2.0") (casual-info "1.2.0"))
+;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -27,10 +27,11 @@
 ;; porcelains. Included are porcelains for the following packages:
 
 ;; - Calc (casual-calc)
-;; - I-Search (casual-isearch)
 ;; - Dired (casual-dired)
-;; - Avy (casual-avy)
+;; - I-Search (casual-isearch)
+;; - IBuffer (casual-ibuffer)
 ;; - Info (casual-info)
+;; - Avy (casual-avy)
 
 ;; INSTALLATION
 
@@ -43,17 +44,21 @@
 ;; (require 'casual-suite)
 ;; (keymap-set calc-mode-map "C-o" #'casual-calc-tmenu)
 ;; (keymap-set dired-mode-map "C-o" #'casual-dired-tmenu)
+;; (keymap-set isearch-mode-map "<f2>" #'cc-isearch-menu-transient)
+;; (keymap-set ibuffer-mode-map "C-o" #'casual-ibuffer-tmenu)
+;; (keymap-set ibuffer-mode-map "F" #'casual-ibuffer-filter-tmenu)
+;; (keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
 ;; (keymap-set Info-mode-map "C-o" #'casual-info-tmenu)
 ;; (keymap-global-set "M-g" #'casual-avy-tmenu)
-;; (keymap-set isearch-mode-map "<f2>" #'cc-isearch-menu-transient)
 
 ;;; Code:
 
 (require 'casual-calc)
 (require 'casual-dired)
-(require 'casual-avy)
-(require 'casual-info)
 (require 'casual-isearch)
+(require 'casual-ibuffer)
+(require 'casual-info)
+(require 'casual-avy)
 
 (defun casual-suite-about-suite ()
   "Casual Suite is a collection of all Casual porcelains.
@@ -61,11 +66,12 @@
 This is an umbrella package that collects all the Casual packages.
 Included are porcelains for the following packages:
 
-- Calc (Casual Calc)
-- I-Search (Casual I-Search)
-- Dired (Casual Dired)
-- Info (Casual Info)
-- Avy (Casual Avy)
+- Calc (casual-calc)
+- Dired (casual-dired)
+- I-Search (casual-isearch)
+- IBuffer (casual-ibuffer)
+- Info (casual-info)
+- Avy (casual-avy)
 
 Learn more about using Casual Suite at our discussion group on GitHub.
 Any questions or comments about it should be made there.
