@@ -35,14 +35,18 @@ CASUAL_LIB_LISP_DIR=$(CASUAL_LIB_DIR)/lisp
 CASUAL_LIB_TEST_INCLUDES=$(CASUAL_LIB_DIR)/tests/casual-lib-test-utils.el
 EMACS_CONFIG_DIR=$(HOME)/.config/emacs
 AVY_DIR=$(EMACS_CONFIG_DIR)/elpa/avy-20230420.404
-PACKAGE_PATHS=-L $(AVY_DIR)		\
--L $(CASUAL_LIB_LISP_DIR) \
+EMACS_ELPA_DIR=$(EMACS_CONFIG_DIR)/elpa
+PACKAGE_PATHS=-L $(AVY_DIR)			\
+-L $(EMACS_ELPA_DIR)/compat-29.1.4.5		\
+-L $(EMACS_ELPA_DIR)/seq-2.24			\
+-L $(EMACS_ELPA_DIR)/transient-current		\
+-L $(CASUAL_LIB_LISP_DIR)			\
 -L $(CASUAL_BASE_DIR)/casual-calc/lisp		\
 -L $(CASUAL_BASE_DIR)/casual-avy/lisp		\
 -L $(CASUAL_BASE_DIR)/casual-info/lisp		\
 -L $(CASUAL_BASE_DIR)/casual-dired/lisp		\
--L $(CASUAL_BASE_DIR)/casual-isearch		\
-
+-L $(CASUAL_BASE_DIR)/casual-ibuffer/lisp	\
+-L $(CASUAL_BASE_DIR)/casual-isearch
 
 .PHONY: tests compile regression
 
