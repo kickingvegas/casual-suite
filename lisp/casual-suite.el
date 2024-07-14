@@ -5,8 +5,8 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
-;; Version: 1.2.0
-;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0"))
+;; Version: 1.3.0
+;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0") (casual-re-builder "1.0.2"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -31,6 +31,7 @@
 ;; - I-Search (casual-isearch)
 ;; - IBuffer (casual-ibuffer)
 ;; - Info (casual-info)
+;; - RE-Builder (casual-re-builder)
 ;; - Avy (casual-avy)
 
 ;; INSTALLATION
@@ -50,6 +51,8 @@
 ;; (keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
 ;; (keymap-set Info-mode-map "C-o" #'casual-info-tmenu)
 ;; (keymap-global-set "M-g" #'casual-avy-tmenu)
+;; (keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
+;; (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
 
 ;;; Code:
 
@@ -58,6 +61,7 @@
 (require 'casual-isearch)
 (require 'casual-ibuffer)
 (require 'casual-info)
+(require 'casual-re-builder)
 (require 'casual-avy)
 
 (defun casual-suite-about-suite ()
@@ -71,6 +75,7 @@ Included are porcelains for the following packages:
 - I-Search (casual-isearch)
 - IBuffer (casual-ibuffer)
 - Info (casual-info)
+- RE-Builder (casual-re-builder)
 - Avy (casual-avy)
 
 Learn more about using Casual Suite at our discussion group on GitHub.
