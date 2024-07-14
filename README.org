@@ -7,7 +7,8 @@ An umbrella package to support a single installation point for all Casual porcel
 - [[https://github.com/kickingvegas/casual-dired][Casual Dired]] - a Transient porcelain for the Dired file manager.
 - [[https://github.com/kickingvegas/casual-info][Casual Info]] - a Transient porcelain for Info.  
 - [[https://github.com/kickingvegas/casual-calc][Casual Calc]] - a Transient porcelain for Calc.
-- [[https://github.com/kickingvegas/casual-ibuffer][Casual IBuffer]] - a Transient porcelain for IBuffer.  
+- [[https://github.com/kickingvegas/casual-ibuffer][Casual IBuffer]] - a Transient porcelain for IBuffer.
+- [[https://github.com/kickingvegas/casual-re-builder][Casual RE-Builder]] - a Transient porcelain for RE-Builder.  
 - [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient porcelain for Avy.
 
 * Requirements
@@ -24,7 +25,8 @@ It is highly recommended that a deep reading of the install procedure for each p
 - [[https://github.com/kickingvegas/casual-dired?tab=readme-ov-file#install][Casual Dired]] 
 - [[https://github.com/kickingvegas/casual-info?tab=readme-ov-file#install][Casual Info]] 
 - [[https://github.com/kickingvegas/casual-calc?tab=readme-ov-file#install][Casual Calc]]
-- [[https://github.com/kickingvegas/casual-ibuffer?tab=readme-ov-file#install][Casual IBuffer]] 
+- [[https://github.com/kickingvegas/casual-ibuffer?tab=readme-ov-file#install][Casual IBuffer]]
+- [[https://github.com/kickingvegas/casual-re-builder?tab=readme-ov-file#install][Casual RE-Builder]] 
 - [[https://github.com/kickingvegas/casual-avy?tab=readme-ov-file#install][Casual Avy]] 
 
 ** TL;DR
@@ -41,6 +43,8 @@ The following lines illustrate an installation of the Casual Suite with no custo
   (keymap-set ibuffer-mode-map "F" #'casual-ibuffer-filter-tmenu)
   (keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
   (keymap-set Info-mode-map "C-o" #'casual-info-tmenu)
+  (keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
+  (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
   (keymap-global-set "M-g" #'casual-avy-tmenu)
 #+end_src
 
@@ -68,12 +72,19 @@ For an alternate install using ~use-package~:
     :ensure t
     :bind (:map isearch-mode-map ("<f2>" . casual-isearch-tmenu)))
 
+  (require 'ibuffer)
   (use-package casual-ibuffer
     :ensure t
     :bind (:map ibuffer-mode-map
                 ("C-o" . casual-ibuffer-tmenu)
                 ("F" . casual-ibuffer-filter-tmenu)
                 ("s" . casual-ibuffer-sortby-tmenu)))
+
+  (require 're-builder)
+  (use-package casual-re-builder
+    :ensure t
+    :bind (:map reb-mode-map
+                ("C-o" . casual-re-builder-tmenu)))
 #+end_src
 
 * Sponsorship
@@ -82,4 +93,4 @@ If you enjoy using Casual Suite, consider making a modest financial contribution
 [[https://www.buymeacoffee.com/kickingvegas][file:docs/images/default-yellow.png]]
   
 * Acknowledgments
-A heartfelt thanks to all the contributors to Calc, Dired, Info, I-Search, Info, IBuffer, Avy, and [[https://github.com/magit/transient][Transient]]. Casual Suite would not be possible without your efforts.
+A heartfelt thanks to all the contributors to Calc, Dired, Info, I-Search, Info, IBuffer, RE-Builder, Avy, and [[https://github.com/magit/transient][Transient]]. Casual Suite would not be possible without your efforts.
