@@ -5,8 +5,8 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
-;; Version: 1.3.0
-;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0") (casual-re-builder "1.0.2"))
+;; Version: 1.4.0
+;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0") (casual-re-builder "1.0.2") (casual-bookmarks "1.0.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@
 ;; An umbrella package to support a single installation point for all Casual
 ;; porcelains. Included are porcelains for the following packages:
 
+;; - Bookmarks (casual-bookmarks)
 ;; - Calc (casual-calc)
 ;; - Dired (casual-dired)
 ;; - I-Search (casual-isearch)
@@ -53,6 +54,7 @@
 ;; (keymap-global-set "M-g" #'casual-avy-tmenu)
 ;; (keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
 ;; (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
+;; (keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
 
 ;;; Code:
 
@@ -63,6 +65,7 @@
 (require 'casual-info)
 (require 'casual-re-builder)
 (require 'casual-avy)
+(require 'casual-bookmarks)
 
 (defun casual-suite-about-suite ()
   "Casual Suite is a collection of all Casual porcelains.
@@ -70,6 +73,7 @@
 This is an umbrella package that collects all the Casual packages.
 Included are porcelains for the following packages:
 
+- Bookmarks (casual-bookmarks)
 - Calc (casual-calc)
 - Dired (casual-dired)
 - I-Search (casual-isearch)
