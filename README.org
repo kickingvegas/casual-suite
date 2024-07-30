@@ -51,49 +51,70 @@ The following lines illustrate an installation of the Casual Suite with no custo
   (keymap-global-set "M-g" #'casual-avy-tmenu)
 #+end_src
 
-For an alternate install using ~use-package~:
+For users who prefer ~use-package~, it is highly recommended that ~casual-suite~ be installed via ~package.el~ or some equivalent package manager and /not/ through ~use-package~. As ~casual-suite~ is an umbrella install package, installing it with ~:ensure t~ alongside individual configurations of the Casual porcelains that also install using ~:ensure t~ can lead to undesired order-dependent behavior.
+
+The following minimal configuration code using ~use-package~ for configuring each Casual porcelain is shown below. It is provided as an example to quickly use Casual Suite. As mentioned before, it is recommended that a deep read of the install procedure for each porcelain be used for guidance for configuration.
 
 #+begin_src elisp :lexical no
-  (require 'casual-suite)
   (use-package casual-calc
-    :ensure t
+    :ensure nil
     :bind (:map calc-mode-map ("C-o" . casual-calc-tmenu)))
 
   (use-package casual-info
-    :ensure t
+    :ensure nil
     :bind (:map Info-mode-map ("C-o" . casual-info-tmenu)))
 
   (use-package casual-dired
-    :ensure t
+    :ensure nil
     :bind (:map dired-mode-map ("C-o" . casual-dired-tmenu)))
 
   (use-package casual-avy
-    :ensure t
+    :ensure nil
     :bind ("M-g" . casual-avy-tmenu))
 
   (use-package casual-isearch
-    :ensure t
+    :ensure nil
     :bind (:map isearch-mode-map ("<f2>" . casual-isearch-tmenu)))
 
-  (require 'ibuffer)
+  (use-package ibuffer
+    :hook (ibuffer-mode . ibuffer-auto-mode)
+    :defer t)
   (use-package casual-ibuffer
-    :ensure t
-    :bind (:map ibuffer-mode-map
-                ("C-o" . casual-ibuffer-tmenu)
-                ("F" . casual-ibuffer-filter-tmenu)
-                ("s" . casual-ibuffer-sortby-tmenu)))
+    :ensure nil
+    :bind (:map
+           ibuffer-mode-map
+           ("C-o" . casual-ibuffer-tmenu)
+           ("F" . casual-ibuffer-filter-tmenu)
+           ("s" . casual-ibuffer-sortby-tmenu)
+           ("<double-mouse-1>" . ibuffer-visit-buffer) ; optional
+           ("M-<double-mouse-1>" . ibuffer-visit-buffer-other-window) ; optional
+           ("{" . ibuffer-backwards-next-marked) ; optional
+           ("}" . ibuffer-forward-next-marked)   ; optional
+           ("[" . ibuffer-backward-filter-group) ; optional
+           ("]" . ibuffer-forward-filter-group)  ; optional
+           ("$" . ibuffer-toggle-filter-group))  ; optional
+    :after (ibuffer))
 
-  (require 're-builder)
+  (use-package re-builder
+    :defer t)
   (use-package casual-re-builder
-    :ensure t
-    :bind (:map reb-mode-map
-                ("C-o" . casual-re-builder-tmenu)))
+    :ensure nil
+    :bind (:map
+           reb-mode-map ("C-o" . casual-re-builder-tmenu)
+           :map
+           reb-lisp-mode-map ("C-o" . casual-re-builder-tmenu))
+    :after (re-builder))
 
-  (require 'bookmarks)
+  (use-package bookmark
+    :ensure nil
+    :defer t)
   (use-package casual-bookmarks
-    :ensure t
+    :ensure nil
     :bind (:map bookmark-bmenu-mode-map
-                ("C-o" . casual-bookmarks-tmenu)))
+                ("C-o" . casual-bookmarks-tmenu)
+                ("S" . casual-bookmarks-sortby-tmenu)
+                ("J" . bookmark-jump))
+    :after (bookmark))
 #+end_src
 
 * Sponsorship
