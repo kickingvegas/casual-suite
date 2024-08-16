@@ -10,6 +10,7 @@ An umbrella package to support a single installation point for all Casual porcel
 - [[https://github.com/kickingvegas/casual-ibuffer][Casual IBuffer]] - a Transient porcelain for IBuffer.
 - [[https://github.com/kickingvegas/casual-re-builder][Casual RE-Builder]] - a Transient porcelain for RE-Builder.
 - [[https://github.com/kickingvegas/casual-bookmarks][Casual Bookmarks]] - a Transient porcelain for the bookmark list.
+- [[https://github.com/kickingvegas/casual-agenda][Casual Agenda]] - a Transient user interface for Org Agenda.
 - [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient porcelain for Avy.
 
 * Requirements
@@ -28,7 +29,8 @@ It is highly recommended that a deep reading of the install procedure for each p
 - [[https://github.com/kickingvegas/casual-calc?tab=readme-ov-file#install][Casual Calc]]
 - [[https://github.com/kickingvegas/casual-ibuffer?tab=readme-ov-file#install][Casual IBuffer]]
 - [[https://github.com/kickingvegas/casual-re-builder?tab=readme-ov-file#install][Casual RE-Builder]]
-- [[https://github.com/kickingvegas/casual-bookmarks?tab=readme-ov-file#install][Casual Bookmarks]]  
+- [[https://github.com/kickingvegas/casual-bookmarks?tab=readme-ov-file#install][Casual Bookmarks]]
+- [[https://github.com/kickingvegas/casual-agenda?tab=readme-ov-file#install][Casual Agenda]]
 - [[https://github.com/kickingvegas/casual-avy?tab=readme-ov-file#install][Casual Avy]]
 
 ** TL;DR
@@ -48,6 +50,7 @@ The following lines illustrate an installation of the Casual Suite with no custo
   (keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
   (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
   (keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
+  (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
   (keymap-global-set "M-g" #'casual-avy-tmenu)
 #+end_src
 
@@ -115,6 +118,14 @@ The following minimal configuration code using ~use-package~ for configuring eac
                 ("S" . casual-bookmarks-sortby-tmenu)
                 ("J" . bookmark-jump))
     :after (bookmark))
+
+  (use-package casual-agenda
+    :ensure nil
+    :bind (:map
+           org-agenda-mode-map
+           ("C-o" . casual-agenda-tmenu)
+           ("M-j" . org-agenda-clock-goto) ; optional
+           ("J" . bookmark-jump))) ; optional
 #+end_src
 
 * Sponsorship
