@@ -24,7 +24,7 @@
 ;;; Commentary:
 
 ;; An umbrella package to support a single installation point for all Casual
-;; porcelains. Included are porcelains for the following packages:
+;; user interfaces. Included are user interfaces for the following packages:
 
 ;; - Bookmarks (casual-bookmarks)
 ;; - Calc (casual-calc)
@@ -38,7 +38,7 @@
 ;; INSTALLATION
 
 ;; As this is an umbrella package, it is highly recommended that a deep reading
-;; of the install procedure for each porcelain be done beforehand as each of
+;; of the install procedure for each user interface be done beforehand as each of
 ;; them have their own recommended customizations to go alongside them.
 ;; https://github.com/kickingvegas/casual-suite
 
@@ -70,10 +70,10 @@
 (require 'casual-agenda)
 
 (defun casual-suite-about-suite ()
-  "Casual Suite is a collection of all Casual porcelains.
+  "Casual Suite is a collection of all Casual user interfaces.
 
 This is an umbrella package that collects all the Casual packages.
-Included are porcelains for the following packages:
+Included are user interfaces for the following packages:
 
 - Bookmarks (casual-bookmarks)
 - Calc (casual-calc)

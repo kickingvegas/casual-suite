@@ -1,17 +1,17 @@
 [[https://melpa.org/#/casual-suite][file:https://melpa.org/packages/casual-suite-badge.svg]]
 
 * Casual Suite
-An umbrella package to support a single installation point for all Casual porcelains for Emacs. These porcelains built with [[https://github.com/magit/transient][Transient]] are included via the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][Elisp library header]] ~Package-Requires~. Included porcelains are:
+An umbrella package to support a single installation point for all Casual user interfaces for Emacs. These user interfaces built with [[https://github.com/magit/transient][Transient]] are included via the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][Elisp library header]] ~Package-Requires~. Included user interfaces are:
 
 - [[https://github.com/kickingvegas/casual-isearch][Casual I-Search]] - a Transient menu for I-Search.
-- [[https://github.com/kickingvegas/casual-dired][Casual Dired]] - a Transient porcelain for the Dired file manager.
-- [[https://github.com/kickingvegas/casual-info][Casual Info]] - a Transient porcelain for Info.  
-- [[https://github.com/kickingvegas/casual-calc][Casual Calc]] - a Transient porcelain for Calc.
-- [[https://github.com/kickingvegas/casual-ibuffer][Casual IBuffer]] - a Transient porcelain for IBuffer.
-- [[https://github.com/kickingvegas/casual-re-builder][Casual RE-Builder]] - a Transient porcelain for RE-Builder.
-- [[https://github.com/kickingvegas/casual-bookmarks][Casual Bookmarks]] - a Transient porcelain for the bookmark list.
+- [[https://github.com/kickingvegas/casual-dired][Casual Dired]] - a Transient user interface for the Dired file manager.
+- [[https://github.com/kickingvegas/casual-info][Casual Info]] - a Transient user interface for Info.  
+- [[https://github.com/kickingvegas/casual-calc][Casual Calc]] - a Transient user interface for Calc.
+- [[https://github.com/kickingvegas/casual-ibuffer][Casual IBuffer]] - a Transient user interface for IBuffer.
+- [[https://github.com/kickingvegas/casual-re-builder][Casual RE-Builder]] - a Transient user interface for RE-Builder.
+- [[https://github.com/kickingvegas/casual-bookmarks][Casual Bookmarks]] - a Transient user interface for the bookmark list.
 - [[https://github.com/kickingvegas/casual-agenda][Casual Agenda]] - a Transient user interface for Org Agenda.
-- [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient porcelain for Avy.
+- [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient user interface for Avy.
 
 * Requirements
 Casual Suite has been verified with the following configuration. 
@@ -21,7 +21,7 @@ Casual Suite has been verified with the following configuration.
 As Casual Suite is new, we are looking for early adopters! Your [[https://github.com/kickingvegas/casual-info/discussions][feedback]] is welcome as it will likely impact Casual Suite's evolution, particularly with regards to UI.
 
 * Install
-It is highly recommended that a deep reading of the install procedure for each porcelain be done beforehand as each of them have their own recommended customizations to go alongside them. Such customizations ensure that you have the best experience with each porcelain.
+It is highly recommended that a deep reading of the install procedure for each user interface be done beforehand as each of them have their own recommended customizations to go alongside them. Such customizations ensure that you have the best experience with each user interface.
 
 - [[https://github.com/kickingvegas/casual-isearch?tab=readme-ov-file#install][Casual I-Search]]
 - [[https://github.com/kickingvegas/casual-dired?tab=readme-ov-file#install][Casual Dired]] 
@@ -54,9 +54,9 @@ The following lines illustrate an installation of the Casual Suite with no custo
   (keymap-global-set "M-g" #'casual-avy-tmenu)
 #+end_src
 
-For users who prefer ~use-package~, it is highly recommended that ~casual-suite~ be installed via ~package.el~ or some equivalent package manager and /not/ through ~use-package~. As ~casual-suite~ is an umbrella install package, installing it with ~:ensure t~ alongside individual configurations of the Casual porcelains that also install using ~:ensure t~ can lead to undesired order-dependent behavior.
+For users who prefer ~use-package~, it is highly recommended that ~casual-suite~ be installed via ~package.el~ or some equivalent package manager and /not/ through ~use-package~. As ~casual-suite~ is an umbrella install package, installing it with ~:ensure t~ alongside individual configurations of the Casual user interfaces that also install using ~:ensure t~ can lead to undesired order-dependent behavior.
 
-The following minimal configuration code using ~use-package~ for configuring each Casual porcelain is shown below. It is provided as an example to quickly use Casual Suite. As mentioned before, it is recommended that a deep read of the install procedure for each porcelain be used for guidance for configuration.
+The following minimal configuration code using ~use-package~ for configuring each Casual user interface is shown below. It is provided as an example to quickly use Casual Suite. As mentioned before, it is recommended that a deep read of the install procedure for each user interface be used for guidance for configuration.
 
 #+begin_src elisp :lexical no
   (use-package casual-calc
