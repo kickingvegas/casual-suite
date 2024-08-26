@@ -46,7 +46,7 @@
 ;; (require 'casual-suite)
 ;; (keymap-set calc-mode-map "C-o" #'casual-calc-tmenu)
 ;; (keymap-set dired-mode-map "C-o" #'casual-dired-tmenu)
-;; (keymap-set isearch-mode-map "<f2>" #'cc-isearch-menu-transient)
+;; (keymap-set isearch-mode-map "C-o" #'casual-isearch-tmenu)
 ;; (keymap-set ibuffer-mode-map "C-o" #'casual-ibuffer-tmenu)
 ;; (keymap-set ibuffer-mode-map "F" #'casual-ibuffer-filter-tmenu)
 ;; (keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
