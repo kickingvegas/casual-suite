@@ -42,7 +42,7 @@ The following lines illustrate an installation of the Casual Suite with no custo
   (require 'casual-suite)
   (keymap-set calc-mode-map "C-o" #'casual-calc-tmenu)
   (keymap-set dired-mode-map "C-o" #'casual-dired-tmenu)
-  (keymap-set isearch-mode-map "<f2>" #'cc-isearch-menu-transient)
+  (keymap-set isearch-mode-map "C-o" #'casual-isearch-tmenu)
   (keymap-set ibuffer-mode-map "C-o" #'casual-ibuffer-tmenu)
   (keymap-set ibuffer-mode-map "F" #'casual-ibuffer-filter-tmenu)
   (keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
@@ -77,7 +77,7 @@ The following minimal configuration code using ~use-package~ for configuring eac
 
   (use-package casual-isearch
     :ensure nil
-    :bind (:map isearch-mode-map ("<f2>" . casual-isearch-tmenu)))
+    :bind (:map isearch-mode-map ("C-o" . casual-isearch-tmenu)))
 
   (use-package ibuffer
     :hook (ibuffer-mode . ibuffer-auto-mode)
