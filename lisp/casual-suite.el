@@ -5,7 +5,7 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
-;; Version: 1.4.1
+;; Version: 1.4.2
 ;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0") (casual-re-builder "1.0.2") (casual-bookmarks "1.0.0") (casual-agenda "1.0.1"))
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -46,7 +46,7 @@
 ;; (require 'casual-suite)
 ;; (keymap-set calc-mode-map "C-o" #'casual-calc-tmenu)
 ;; (keymap-set dired-mode-map "C-o" #'casual-dired-tmenu)
-;; (keymap-set isearch-mode-map "<f2>" #'cc-isearch-menu-transient)
+;; (keymap-set isearch-mode-map "C-o" #'casual-isearch-tmenu)
 ;; (keymap-set ibuffer-mode-map "C-o" #'casual-ibuffer-tmenu)
 ;; (keymap-set ibuffer-mode-map "F" #'casual-ibuffer-filter-tmenu)
 ;; (keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
@@ -55,7 +55,6 @@
 ;; (keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
 ;; (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
 ;; (keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
-;; (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
 
 ;;; Code:
 
