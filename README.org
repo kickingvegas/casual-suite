@@ -14,6 +14,11 @@ An umbrella package to support a single installation point for all Casual user i
 - [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient user interface for Avy.
 
 * Requirements
+Casual Suite requires usage of
+- Emacs ≥ 29.1
+- Avy ≥ 0.5.0
+- Casual Lib ≥ 1.1.0
+
 Casual Suite has been verified with the following configuration. 
 - Emacs 29.4 (macOS 14.5, Ubuntu Linux 22.04.4 LTS)
 
@@ -32,6 +37,12 @@ It is highly recommended that a deep reading of the install procedure for each u
 - [[https://github.com/kickingvegas/casual-bookmarks?tab=readme-ov-file#install][Casual Bookmarks]]
 - [[https://github.com/kickingvegas/casual-agenda?tab=readme-ov-file#install][Casual Agenda]]
 - [[https://github.com/kickingvegas/casual-avy?tab=readme-ov-file#install][Casual Avy]]
+
+** A Note on Package Dependencies
+Casual Suite requires Casual Lib which in turn requires a recent installation of Transient 0.6.0+ from either [[https://elpa.gnu.org/packages/transient.html][ELPA]] or [[https://melpa.org/#/transient][MELPA]]. As an older version of Transient is built-in to the Emacs release, the package manager ~package.el~ will /not/ update this package unless the customizable variable ~package-install-upgrade-built-in~ is set to ~t~. Set this variable and proceed with installing Casual Suite. Alternately invoking ~package-install~ with a prefix (~C-u~) will temporarily coerce the update of the built-in package. (example: ~C-u M-x package-install~ ~casual-suite~)
+
+As Transient is closely tied to Magit, installing the latest version of Magit (via [[https://elpa.nongnu.org/nongnu/magit.html][non-GNU ELPA]] or [[https://melpa.org/#/magit][MELPA]]) before installing Casual Suite can also pick up the latest version of Transient.
+
 
 ** TL;DR
 Impatient readers can use the following code to put into their Emacs initialization file to immediately use Casual Suite. 
