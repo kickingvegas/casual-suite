@@ -48,7 +48,8 @@ PACKAGE_PATHS=-L $(AVY_DIR)			\
 -L $(CASUAL_BASE_DIR)/casual-ibuffer/lisp	\
 -L $(CASUAL_BASE_DIR)/casual-re-builder/lisp	\
 -L $(CASUAL_BASE_DIR)/casual-bookmarks/lisp	\
--L $(CASUAL_BASE_DIR)/casual-isearch
+-L $(CASUAL_BASE_DIR)/casual-agenda/lisp	\
+-L $(CASUAL_BASE_DIR)/casual-isearch/lisp
 
 .PHONY: tests compile regression
 
