@@ -33,6 +33,7 @@
 ;; - IBuffer (casual-ibuffer)
 ;; - Info (casual-info)
 ;; - RE-Builder (casual-re-builder)
+;; - Org Agenda (casual-agenda)
 ;; - Avy (casual-avy)
 
 ;; INSTALLATION
@@ -55,6 +56,7 @@
 ;; (keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
 ;; (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
 ;; (keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
+;; (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
 
 ;; NOTE: This package requires `casual-lib' which in turn requires an update of
 ;; the built-in package `transient' ≥ 0.6.0. Please customize the variable
