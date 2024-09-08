@@ -36,20 +36,22 @@ CASUAL_LIB_TEST_INCLUDES=$(CASUAL_LIB_DIR)/tests/casual-lib-test-utils.el
 EMACS_CONFIG_DIR=$(HOME)/.config/emacs
 AVY_DIR=$(EMACS_CONFIG_DIR)/elpa/avy-20230420.404
 EMACS_ELPA_DIR=$(EMACS_CONFIG_DIR)/elpa
-PACKAGE_PATHS=-L $(AVY_DIR)			\
--L $(EMACS_ELPA_DIR)/compat-30.0.0.0		\
--L $(EMACS_ELPA_DIR)/seq-2.24			\
--L $(EMACS_ELPA_DIR)/transient-current		\
--L $(CASUAL_LIB_LISP_DIR)			\
--L $(CASUAL_BASE_DIR)/casual-calc/lisp		\
--L $(CASUAL_BASE_DIR)/casual-avy/lisp		\
--L $(CASUAL_BASE_DIR)/casual-info/lisp		\
--L $(CASUAL_BASE_DIR)/casual-dired/lisp		\
--L $(CASUAL_BASE_DIR)/casual-ibuffer/lisp	\
--L $(CASUAL_BASE_DIR)/casual-re-builder/lisp	\
--L $(CASUAL_BASE_DIR)/casual-bookmarks/lisp	\
--L $(CASUAL_BASE_DIR)/casual-agenda/lisp	\
--L $(CASUAL_BASE_DIR)/casual-isearch/lisp
+PACKAGE_PATHS=-L $(AVY_DIR)				\
+-L $(EMACS_ELPA_DIR)/compat-30.0.0.0			\
+-L $(EMACS_ELPA_DIR)/seq-2.24				\
+-L $(EMACS_ELPA_DIR)/transient-current			\
+-L $(CASUAL_LIB_LISP_DIR)				\
+-L $(EMACS_ELPA_DIR)/symbol-overlay-20240311.1207	\
+-L $(CASUAL_BASE_DIR)/casual-calc/lisp			\
+-L $(CASUAL_BASE_DIR)/casual-avy/lisp			\
+-L $(CASUAL_BASE_DIR)/casual-info/lisp			\
+-L $(CASUAL_BASE_DIR)/casual-dired/lisp			\
+-L $(CASUAL_BASE_DIR)/casual-ibuffer/lisp		\
+-L $(CASUAL_BASE_DIR)/casual-re-builder/lisp		\
+-L $(CASUAL_BASE_DIR)/casual-bookmarks/lisp		\
+-L $(CASUAL_BASE_DIR)/casual-agenda/lisp		\
+-L $(CASUAL_BASE_DIR)/casual-isearch/lisp		\
+-L $(CASUAL_BASE_DIR)/casual-symbol-overlay/lisp
 
 .PHONY: tests compile regression
 

@@ -6,7 +6,7 @@
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
 ;; Version: 1.5.0
-;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0") (casual-re-builder "1.0.2") (casual-bookmarks "1.0.0") (casual-agenda "1.0.1"))
+;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0") (casual-re-builder "1.0.2") (casual-bookmarks "1.0.0") (casual-agenda "1.0.1") (casual-symbol-overlay "1.0.1"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -35,6 +35,7 @@
 ;; - RE-Builder (casual-re-builder)
 ;; - Org Agenda (casual-agenda)
 ;; - Avy (casual-avy)
+;; - Symbol Overlay (casual-symbol-overlay)
 
 ;; INSTALLATION
 
@@ -57,6 +58,7 @@
 ;; (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
 ;; (keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
 ;; (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
+;; (keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
 
 ;; NOTE: This package requires `casual-lib' which in turn requires an update of
 ;; the built-in package `transient' ≥ 0.6.0. Please customize the variable
@@ -75,6 +77,7 @@
 (require 'casual-avy)
 (require 'casual-bookmarks)
 (require 'casual-agenda)
+(require 'casual-symbol-overlay)
 
 (defun casual-suite-about-suite ()
   "Casual Suite is a collection of all Casual user interfaces.
@@ -91,6 +94,7 @@ Included are user interfaces for the following packages:
 - RE-Builder (casual-re-builder)
 - Org Agenda (casual-agenda)
 - Avy (casual-avy)
+- Symbol Overlay (casual-symbol-overlay)
 
 Learn more about using Casual Suite at our discussion group on GitHub.
 Any questions or comments about it should be made there.
