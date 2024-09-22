@@ -12,7 +12,9 @@ An umbrella package to support a single installation point for all Casual user i
 - [[https://github.com/kickingvegas/casual-bookmarks][Casual Bookmarks]] - a Transient user interface for the bookmark list.
 - [[https://github.com/kickingvegas/casual-agenda][Casual Agenda]] - a Transient user interface for Org Agenda.
 - [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient user interface for Avy.
-- [[https://github.com/kickingvegas/casual-symbol-overlay][Casual Symbol Overlay]] - a Transient user interface for Symbol Overlay.  
+- [[https://github.com/kickingvegas/casual-symbol-overlay][Casual Symbol Overlay]] - a Transient user interface for Symbol Overlay.
+- [[https://github.com/kickingvegas/casual-editkit][Casual EditKit]] - a Transient user interface library for Emacs editing commands.
+  
 
 * Requirements
 Casual Suite requires usage of
@@ -39,7 +41,8 @@ It is highly recommended that a deep reading of the install procedure for each u
 - [[https://github.com/kickingvegas/casual-bookmarks?tab=readme-ov-file#install][Casual Bookmarks]]
 - [[https://github.com/kickingvegas/casual-agenda?tab=readme-ov-file#install][Casual Agenda]]
 - [[https://github.com/kickingvegas/casual-avy?tab=readme-ov-file#install][Casual Avy]]
-- [[https://github.com/kickingvegas/casual-symbol-overlay?tab=readme-ov-file#install][Casual Symbol Overlay]]  
+- [[https://github.com/kickingvegas/casual-symbol-overlay?tab=readme-ov-file#install][Casual Symbol Overlay]]
+- [[https://github.com/kickingvegas/casual-editkit?tab=readme-ov-file#install][Casual EditKit]]    
 
 ** A Note on Package Dependencies
 Casual Suite requires Casual Lib which in turn requires a recent installation of Transient 0.6.0+ from either [[https://elpa.gnu.org/packages/transient.html][ELPA]] or [[https://melpa.org/#/transient][MELPA]]. As an older version of Transient is built-in to the Emacs release, the package manager ~package.el~ will /not/ update this package unless the customizable variable ~package-install-upgrade-built-in~ is set to ~t~. Set this variable and proceed with installing Casual Suite. Alternately invoking ~package-install~ with a prefix (~C-u~) will temporarily coerce the update of the built-in package. (example: ~C-u M-x package-install~ ~casual-suite~)
@@ -67,6 +70,7 @@ The following lines illustrate an installation of the Casual Suite with no custo
   (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
   (keymap-global-set "M-g" #'casual-avy-tmenu)
   (keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
+  (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
 #+end_src
 
 For users who prefer ~use-package~, it is highly recommended that ~casual-suite~ be installed via ~package.el~ or some equivalent package manager and /not/ through ~use-package~. As ~casual-suite~ is an umbrella install package, installing it with ~:ensure t~ alongside individual configurations of the Casual user interfaces that also install using ~:ensure t~ can lead to undesired order-dependent behavior.
@@ -141,6 +145,10 @@ The following minimal configuration code using ~use-package~ for configuring eac
            ("C-o" . casual-agenda-tmenu)
            ("M-j" . org-agenda-clock-goto) ; optional
            ("J" . bookmark-jump))) ; optional
+
+  (use-package casual-editkit
+    :ensure nil
+    :bind (("C-o" . casual-editkit-main-tmenu)))
 #+end_src
 
 * Sponsorship
