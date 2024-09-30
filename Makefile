@@ -120,7 +120,7 @@ create-release-tag: checkout-main bump
 	git tag $(VERSION_BUMP)
 	git push origin $(VERSION_BUMP)
 
-create-gh-release: VERSION_BUMP=:$(shell python -m semver nextver $(VERSION) $(BUMP_LEVEL))
+create-gh-release: VERSION_BUMP:=$(shell python -m semver nextver $(VERSION) $(BUMP_LEVEL))
 create-gh-release: create-release-tag
 	gh release create -t v$(VERSION_BUMP) --notes-from-tag $(VERSION_BUMP)
 
