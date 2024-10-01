@@ -39,9 +39,14 @@ EMACS_ELPA_DIR=$(EMACS_CONFIG_DIR)/elpa
 PACKAGE_PATHS=-L $(AVY_DIR)				\
 -L $(EMACS_ELPA_DIR)/compat-30.0.0.0			\
 -L $(EMACS_ELPA_DIR)/seq-2.24				\
+-L $(EMACS_ELPA_DIR)/transpose-frame-current		\
 -L $(EMACS_ELPA_DIR)/transient-current			\
+-L $(EMACS_ELPA_DIR)/magit-current			\
+-L $(EMACS_ELPA_DIR)/magit-section-current		\
+-L $(EMACS_ELPA_DIR)/dash-current			\
+-L $(EMACS_ELPA_DIR)/with-editor-current		\
+-L $(EMACS_ELPA_DIR)/symbol-overlay-current		\
 -L $(CASUAL_LIB_LISP_DIR)				\
--L $(EMACS_ELPA_DIR)/symbol-overlay-20240311.1207	\
 -L $(CASUAL_BASE_DIR)/casual-calc/lisp			\
 -L $(CASUAL_BASE_DIR)/casual-avy/lisp			\
 -L $(CASUAL_BASE_DIR)/casual-info/lisp			\
@@ -51,7 +56,8 @@ PACKAGE_PATHS=-L $(AVY_DIR)				\
 -L $(CASUAL_BASE_DIR)/casual-bookmarks/lisp		\
 -L $(CASUAL_BASE_DIR)/casual-agenda/lisp		\
 -L $(CASUAL_BASE_DIR)/casual-isearch/lisp		\
--L $(CASUAL_BASE_DIR)/casual-symbol-overlay/lisp
+-L $(CASUAL_BASE_DIR)/casual-symbol-overlay/lisp	\
+-L $(CASUAL_BASE_DIR)/casual-editkit/lisp
 
 .PHONY: tests compile regression
 
