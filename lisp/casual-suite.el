@@ -5,7 +5,7 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
-;; Version: 2.0.0
+;; Version: 2.0.1-rc.1
 ;; Package-Requires: ((emacs "29.1") (casual "2.0.0") (casual-avy "2.0.0") (casual-symbol-overlay "2.0.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
