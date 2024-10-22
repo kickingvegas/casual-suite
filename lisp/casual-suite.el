@@ -5,8 +5,8 @@
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
-;; Version: 1.7.4
-;; Package-Requires: ((emacs "29.1") (casual-calc "1.9.0") (casual-isearch "1.7.0") (casual-dired "1.4.0") (casual-ibuffer "1.0.1") (casual-avy "1.2.0") (casual-info "1.2.0") (casual-re-builder "1.0.2") (casual-bookmarks "1.0.0") (casual-agenda "1.0.1") (casual-symbol-overlay "1.0.1") (casual-editkit "1.0.5"))
+;; Version: 1.7.5-rc.1
+;; Package-Requires: ((emacs "29.1") (casual "2.0.0") (casual-avy "2.0.0") (casual-symbol-overlay "2.0.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,17 +26,19 @@
 ;; An umbrella package to support a single installation point for all Casual
 ;; user interfaces. Included are user interfaces for the following packages:
 
-;; - Bookmarks (casual-bookmarks)
-;; - Calc (casual-calc)
-;; - Dired (casual-dired)
-;; - I-Search (casual-isearch)
-;; - IBuffer (casual-ibuffer)
-;; - Info (casual-info)
-;; - RE-Builder (casual-re-builder)
-;; - Org Agenda (casual-agenda)
+;; - casual
+;;   - Bookmarks (casual-bookmarks)
+;;   - Calc (casual-calc)
+;;   - Dired (casual-dired)
+;;   - EditKit (casual-editkit)
+;;   - I-Search (casual-isearch)
+;;   - IBuffer (casual-ibuffer)
+;;   - Info (casual-info)
+;;   - RE-Builder (casual-re-builder)
+;;   - Org Agenda (casual-agenda)
 ;; - Avy (casual-avy)
 ;; - Symbol Overlay (casual-symbol-overlay)
-;; - EditKit (casual-editkit)
+;;
 
 ;; INSTALLATION
 
@@ -62,11 +64,11 @@
 ;; (keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
 ;; (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
 
-;; NOTE: This package requires `casual-lib' which in turn requires an update of
-;; the built-in package `transient' ≥ 0.6.0. Please customize the variable
-;; `package-install-upgrade-built-in' to t to allow for `transient' to be
-;; updated. For further details, consult the INSTALL section of this package's
-;; README.
+;; If you are using Emacs ≤ 30.0, you will need to update the built-in package
+;; `transient'. By default, `package.el' will not upgrade a built-in package.
+;; Set the customizable variable `package-install-upgrade-built-in' to `t' to
+;; override this. For more details, please refer to the "Install" section on
+;; this project's repository web page.
 
 ;;; Code:
 
@@ -88,17 +90,18 @@
 This is an umbrella package that collects all the Casual packages.
 Included are user interfaces for the following packages:
 
-- Bookmarks (casual-bookmarks)
-- Calc (casual-calc)
-- Dired (casual-dired)
-- I-Search (casual-isearch)
-- IBuffer (casual-ibuffer)
-- Info (casual-info)
-- RE-Builder (casual-re-builder)
-- Org Agenda (casual-agenda)
+- casual (casual)
+  - Org Agenda (casual-agenda)
+  - Bookmarks (casual-bookmarks)
+  - Calc (casual-calc)
+  - Dired (casual-dired)
+  - EditKit (casual-editkit)
+  - I-Search (casual-isearch)
+  - IBuffer (casual-ibuffer)
+  - Info (casual-info)
+  - RE-Builder (casual-re-builder)
 - Avy (casual-avy)
 - Symbol Overlay (casual-symbol-overlay)
-- EditKit (casual-editkit)
 
 Learn more about using Casual Suite at our discussion group on GitHub.
 Any questions or comments about it should be made there.
