@@ -1,5 +1,5 @@
 ##
-# Copyright 2024 Charles Y. Choi
+# Copyright (C) 2024-2026 Charles Y. Choi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,9 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-TIMESTAMP := $(shell /bin/date "+%Y%m%d_%H%M%S")
+.PHONY: tests casual-suite-tests
 
-.PHONY: tests
+SRC_DIR=../lisp
 
-tests:
-	$(MAKE) -C ../lisp tests
+tests: casual-suite-tests
+
+casual-suite-tests:
+	$(MAKE) -C $(SRC_DIR) $@

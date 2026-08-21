@@ -1,5 +1,5 @@
 ##
-# Copyright (C) 2024-2026 Charles Y. Choi
+# Copyright (C) 2026 Charles Y. Choi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,23 +14,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-SRC_DIR=.
+include Makefile--defines.make
 
-.PHONY: tests
-tests: casual-suite-tests
+PACKAGE_NAME=casual-suite
 
-.PHONY: casual-suite-tests
-casual-suite-tests:
-	$(MAKE) -C $(SRC_DIR) -f Makefile-casual-suite.make tests
+ELISP_INCLUDES=
 
-.PHONY: package-lint
-package-lint:
-	$(MAKE) -C $(SRC_DIR) -f Makefile-casual-suite.make $@
+ELISP_PACKAGES=
 
-.PHONY: regression
-regression:
-	$(MAKE) -C $(SRC_DIR) -f Makefile-casual-suite.make $@
+ELISP_TEST_INCLUDES=casual-suite-test-utils.el
 
-.PHONY: clean
-clean:
-	$(MAKE) -C $(SRC_DIR) -f Makefile-casual-suite.make $@
+
+include Makefile--rules.make

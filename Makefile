@@ -1,5 +1,5 @@
 ##
-# Copyright 2024 Charles Y. Choi
+# Copyright 2024-2026 Charles Y. Choi
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -43,8 +43,8 @@
 #   $ make new-sprint
 
 LISP_DIR=./lisp
-MAIN_EL=$(LISP_DIR)/casual-suite.el
-VERSION_EL=$(LISP_DIR)/casual-suite-version.el
+PACKAGE_NAME=casual-suite
+MAIN_EL=$(realpath $(LISP_DIR)/$(PACKAGE_NAME).el)
 
 TIMESTAMP := $(shell /bin/date "+%Y%m%d_%H%M%S")
 VERSION := $(shell ./scripts/read-version.sh $(MAIN_EL))
@@ -54,8 +54,12 @@ VERSION_BUMP := $(shell python -m semver bump $(BUMP_LEVEL) $(VERSION))
 VERSION_LAST_TAG := $(shell git tag --sort=-creatordate | head -n 1)
 
 .PHONY: tests					\
+regression					\
+package-lint					\
+clean						\
 create-pr					\
-bump-casual					\
+bump-pkg					\
+bump-pkg-info					\
 bump						\
 checkout-development				\
 checkout-main					\
@@ -70,15 +74,38 @@ status
 
 ## Run test regression
 tests:
-	$(MAKE) -C lisp tests
+	$(MAKE) -C $(LISP_DIR) $@
+
+tests/%:
+	$(MAKE) -C tests $*
+
+regression:
+	$(MAKE) -C $(LISP_DIR) $@
+
+package-lint:
+	$(MAKE) -C $(LISP_DIR) $@
+
+clean:
+	$(MAKE) -C $(LISP_DIR) $@
+	$(MAKE) -C docs $@
+
+docs:
+	$(MAKE) -C docs $@
 
 ## Bump Patch Version
-bump-casual:
+bump-pkg:
 	sed -i 's/;; Version: $(VERSION)/;; Version: $(VERSION_BUMP)/' $(MAIN_EL)
-	sed -i 's/(defconst casual-suite-version "$(VERSION)"/(defconst casual-suite-version "$(VERSION_BUMP)"/' $(VERSION_EL)
 
-bump: bump-casual
-	git commit -m 'Bump version to $(VERSION_BUMP)' $(MAIN_EL) $(VERSION_EL)
+# bump-pkg-info: VERSION_BUMP:=$(shell python -m semver nextver $(VERSION) $(BUMP_LEVEL))
+bump-pkg-info:
+	sed -i 's/+MACRO: version $(VERSION)/+MACRO: version $(VERSION_BUMP)/' docs/$(PACKAGE_NAME).org
+	make -C docs $(PACKAGE_NAME).texi
+
+bump: bump-pkg bump-pkg-info
+	git commit -m 'Bump version to $(VERSION_BUMP)' \
+$(MAIN_EL) \
+docs/$(PACKAGE_NAME).org \
+docs/$(PACKAGE_NAME).texi
 	git push
 
 checkout-development:
@@ -123,7 +150,14 @@ create-release-tag: checkout-main bump
 
 create-gh-release: VERSION_BUMP:=$(shell python -m semver nextver $(VERSION) $(BUMP_LEVEL))
 create-gh-release: create-release-tag
-	gh release create -t v$(VERSION_BUMP) --generate-notes $(VERSION_BUMP)
+	gh release create --draft --title v$(VERSION_BUMP) --generate-notes $(VERSION_BUMP)
 
 status:
 	git status
+
+docs/%:
+	$(MAKE) -C docs $*
+
+.PHONY: user-guide
+user-guide:
+	$(MAKE) -C docs gen-html

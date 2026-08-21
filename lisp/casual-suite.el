@@ -1,12 +1,12 @@
 ;;; casual-suite.el --- A suite of opinionated Transient UIs -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2024  Charles Choi
+;; Copyright (C) 2024-2026  Charles Choi
 
 ;; Author: Charles Choi <kickingvegas@gmail.com>
 ;; URL: https://github.com/kickingvegas/casual-suite
 ;; Keywords: tools
 ;; Version: 2.0.1-rc.1
-;; Package-Requires: ((emacs "29.1") (casual "2.0.0") (casual-avy "2.0.0") (casual-symbol-overlay "2.0.0"))
+;; Package-Requires: ((emacs "29.1") (casual "3.0.0") (casual-avy "2.0.0") (casual-symbol-overlay "2.0.0"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -26,63 +26,22 @@
 ;; An umbrella package to support a single installation point for all Casual
 ;; user interfaces. Included are user interfaces for the following packages:
 
-;; - casual
-;;   - Bookmarks (casual-bookmarks)
-;;   - Calc (casual-calc)
-;;   - Dired (casual-dired)
-;;   - EditKit (casual-editkit)
-;;   - I-Search (casual-isearch)
-;;   - IBuffer (casual-ibuffer)
-;;   - Info (casual-info)
-;;   - RE-Builder (casual-re-builder)
-;;   - Org Agenda (casual-agenda)
-;; - Avy (casual-avy)
-;; - Symbol Overlay (casual-symbol-overlay)
-;;
-
-;; INSTALLATION
-
-;; As this is an umbrella package, it is highly recommended that a deep reading
-;; of the install procedure for each user interface be done beforehand as each of
-;; them have their own recommended customizations to go alongside them.
-;; https://github.com/kickingvegas/casual-suite
-
-;; The following code is a TL;DR initialization for Casual Suite.
-;; (require 'casual-suite)
-;; (keymap-set calc-mode-map "C-o" #'casual-calc-tmenu)
-;; (keymap-set dired-mode-map "C-o" #'casual-dired-tmenu)
-;; (keymap-set isearch-mode-map "C-o" #'casual-isearch-tmenu)
-;; (keymap-set ibuffer-mode-map "C-o" #'casual-ibuffer-tmenu)
-;; (keymap-set ibuffer-mode-map "F" #'casual-ibuffer-filter-tmenu)
-;; (keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
-;; (keymap-set Info-mode-map "C-o" #'casual-info-tmenu)
-;; (keymap-global-set "M-g" #'casual-avy-tmenu)
-;; (keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
-;; (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
-;; (keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
-;; (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
-;; (keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
-;; (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
-
-;; If you are using Emacs ≤ 30.0, you will need to update the built-in package
-;; `transient'. By default, `package.el' will not upgrade a built-in package.
-;; Set the customizable variable `package-install-upgrade-built-in' to `t' to
-;; override this. For more details, please refer to the "Install" section on
-;; this project's repository web page.
 
 ;;; Code:
-
-(require 'casual-calc)
-(require 'casual-dired)
-(require 'casual-isearch)
-(require 'casual-ibuffer)
-(require 'casual-info)
-(require 'casual-re-builder)
+(require 'casual)
 (require 'casual-avy)
-(require 'casual-bookmarks)
-(require 'casual-agenda)
 (require 'casual-symbol-overlay)
-(require 'casual-editkit)
+
+;;;###autoload (autoload 'casual-suite-init "casual-suite" nil t)
+(defun casual-suite-init ()
+  "Initialize Casual Suite."
+
+  (interactive)
+  (add-hook 'casual-init-hook #'casual-avy-init)
+  (add-hook 'casual-init-hook #'casual-symbol-overlay-init)
+
+  (casual-init))
+
 
 (defun casual-suite-about-suite ()
   "Casual Suite is a collection of all Casual user interfaces.
@@ -90,18 +49,7 @@
 This is an umbrella package that collects all the Casual packages.
 Included are user interfaces for the following packages:
 
-- casual (casual)
-  - Org Agenda (casual-agenda)
-  - Bookmarks (casual-bookmarks)
-  - Calc (casual-calc)
-  - Dired (casual-dired)
-  - EditKit (casual-editkit)
-  - I-Search (casual-isearch)
-  - IBuffer (casual-ibuffer)
-  - Info (casual-info)
-  - RE-Builder (casual-re-builder)
-- Avy (casual-avy)
-- Symbol Overlay (casual-symbol-overlay)
+TBD
 
 Learn more about using Casual Suite at our discussion group on GitHub.
 Any questions or comments about it should be made there.
