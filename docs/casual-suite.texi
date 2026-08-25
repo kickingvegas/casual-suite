@@ -1,0 +1,142 @@
+\input texinfo    @c -*- texinfo -*-
+@c %**start of header
+@setfilename casual-suite.info
+@settitle Casual Suite User Guide
+@documentencoding UTF-8
+@documentlanguage en
+@syncodeindex pg cp
+@paragraphindent none
+@c %**end of header
+
+@copying
+Copyright © 2026 Charles Y@. Choi
+@end copying
+
+@dircategory Emacs misc features
+@direntry
+* casual-suite: (casual-suite). Casual Suite is a.
+@end direntry
+
+@finalout
+@titlepage
+@title Casual Suite User Guide
+@subtitle for version 2.0.1-rc.1
+@author Charles Y@. Choi (@email{kickingvegas@@gmail.com})
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top Casual Suite User Guide
+
+Version: 2.0.1-rc.1
+
+Copyright © 2026 @w{Charles Y. Choi}
+
+Hey talk about Casual Suite here.
+
+
+If you enjoy using Casual Suite, please buy me a coffee to help support its development and maintenance.
+
+@image{images/default-yellow,,,,png}
+
+@uref{https://www.buymeacoffee.com/kickingvegas}
+
+@end ifnottex
+
+@menu
+* Features::
+* Requirements::
+* Install::
+* Commands::
+* Feedback & Discussion::
+* Sponsorship::
+* About::
+* Acknowledgments::
+* Main Index::
+* Variable Index::
+@end menu
+
+@node Features
+@chapter Features
+
+@cindex Features
+
+TBD
+
+@node Requirements
+@chapter Requirements
+
+@cindex Requirements
+
+TBD
+
+@strong{now-playing.el} requires GNU Emacs 30.1+ running on macOS 13 (Ventura) or greater.  NS support is recommended for optimal performance.
+
+@node Install
+@chapter Install
+
+@cindex Install
+
+TBD
+
+@node Commands
+@chapter Commands
+
+@cindex Commands
+
+@node Feedback & Discussion
+@chapter Feedback & Discussion
+
+@cindex Feedback
+Please report any feedback about @strong{now-playing.el} to the @uref{https://github.com/kickingvegas/now-playing/issues, issue tracker on GitHub}.
+
+@cindex Discussion
+To participate in general discussion about using @strong{now-playing.el}, please join the @uref{https://github.com/kickingvegas/now-playing/discussions, discussion group}.
+
+@node Sponsorship
+@chapter Sponsorship
+
+@cindex Sponsorship
+
+If you enjoy using Casual Suite, please buy me a coffee to help support its development and maintenance.
+
+@image{images/default-yellow,,,,png}
+
+@uref{https://www.buymeacoffee.com/kickingvegas}
+
+@node About
+@chapter About
+
+@cindex About
+
+@uref{https://github.com/kickingvegas/now-playing, now-playing.el} was conceived and crafted by Charles Choi in San Francisco, California.
+
+Thank you for using @strong{now-playing.el}.
+
+Always choose love.
+
+@node Acknowledgments
+@chapter Acknowledgments
+
+@cindex Acknowledgments
+
+@node Main Index
+@chapter Main Index
+
+Index for this user guide.
+
+@printindex cp
+
+@node Variable Index
+@chapter Variable Index
+
+Variables, functions, commands, and menus referenced by this user guide.
+
+@printindex vr
+
+@bye
