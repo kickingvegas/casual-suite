@@ -35,11 +35,16 @@ PKG_BASE_DIR=$(abspath $(shell pwd)/..)
 PKG_LISP_DIR=$(PKG_BASE_DIR)/lisp
 EMACS_ELPA_DIR=$(HOME)/.config/emacs/elpa
 
-PACKAGE_PATHS=					\
--L $(EMACS_ELPA_DIR)/compat-current		\
--L $(EMACS_ELPA_DIR)/seq-current		\
--L $(EMACS_ELPA_DIR)/llama-current		\
--L $(EMACS_ELPA_DIR)/transient-current		\
--L $(EMACS_ELPA_DIR)/cond-let-current		\
--L $(HOME)/Projects/elisp/casual/lisp		\
+PACKAGE_PATHS=						\
+-L $(EMACS_ELPA_DIR)/compat-current			\
+-L $(EMACS_ELPA_DIR)/seq-current			\
+-L $(EMACS_ELPA_DIR)/llama-current			\
+-L $(EMACS_ELPA_DIR)/transient-current			\
+-L $(EMACS_ELPA_DIR)/cond-let-current			\
+-L $(EMACS_ELPA_DIR)/avy-current			\
+-L $(EMACS_ELPA_DIR)/symbol-overlay-current		\
+-L $(HOME)/Projects/elisp/casual/lisp			\
+-L $(HOME)/Projects/elisp/casual/tests			\
+-L $(HOME)/Projects/elisp/casual-avy/lisp		\
+-L $(HOME)/Projects/elisp/casual-symbol-overlay/lisp	\
 -L $(PKG_LISP_DIR)

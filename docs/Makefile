@@ -43,7 +43,7 @@ ${PKG_NAME}.texi: $(ORG_FILES)
 html:
 	mkdir html
 
-html/images:
+html/images: html
 	mkdir -p $@
 	rsync					\
 --archive					\
@@ -51,10 +51,10 @@ html/images:
 --delete					\
 images/ $@
 
-html/main.css: main.css
+html/main.css: html main.css
 	cp main.css html
 
-html/index.html: ${PKG_NAME}.texi html/images html/main.css
+html/index.html: ${PKG_NAME}.texi html/main.css html/images
 	makeinfo				\
 --html						\
 --css-ref=main.css				\
