@@ -1,73 +1,52 @@
-[[https://melpa.org/#/casual-suite][file:https://melpa.org/packages/casual-suite-badge.svg]]
+[[https://melpa.org/#/casual-suite][file:https://melpa.org/packages/casual-suite-badge.svg]] [[https://stable.melpa.org/#/casual-suite][file:https://stable.melpa.org/packages/casual-suite-badge.svg]]
 
 * Casual Suite
-An umbrella package to support a single installation point for all Casual user interfaces for Emacs. These user interfaces built with [[https://github.com/magit/transient][Transient]] are included via the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][Elisp library header]] ~Package-Requires~. Included user interfaces are:
 
+Casual Suite is an umbrella package to support a single installation point for all Casual user interfaces for Emacs. This is accomplished by including child packages as dependencies via the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][Elisp library header]] ~Package-Requires~.
 
-- [[https://github.com/kickingvegas/casual][Casual]] - A collection of Transient user interfaces for various built-in Emacs modes.
-  - [[https://github.com/kickingvegas/casual/blob/main/docs/agenda.org][Agenda]] - a Transient user interface for Org Agenda.
-  - [[https://github.com/kickingvegas/casual/blob/main/docs/bookmarks.org][Bookmarks]] - a Transient user interface for the bookmark list.
-  - [[https://github.com/kickingvegas/casual/blob/main/docs/calc.org][Calc]] - a Transient user interface for Calc.
-  - [[https://github.com/kickingvegas/casual/blob/main/docs/dired.org][Dired]] - a Transient user interface for the Dired file manager.
-  - [[https://github.com/kickingvegas/casual/blob/main/docs/editkit.org][EditKit]] - a Transient user interface library for Emacs editing commands.
-  - [[https://github.com/kickingvegas/casual/blob/main/docs/ibuffer.org][IBuffer]] - a Transient user interface for IBuffer.
-  - [[https://github.com/kickingvegas/casual/blob/main/docs/info.org][Info]] - a Transient user interface for Info.  
-  - [[https://github.com/kickingvegas/casual/blob/main/docs/isearch.org][I-Search]] - a Transient menu for I-Search.
-  - [[https://github.com/kickingvegas/casual/blog/main/docs/re-builder.org][RE-Builder]] - a Transient user interface for RE-Builder.
-- [[https://github.com/kickingvegas/casual-avy][Casual Avy]] - a Transient user interface for Avy.
-- [[https://github.com/kickingvegas/casual-symbol-overlay][Casual Symbol Overlay]] - a Transient user interface for Symbol Overlay.
+The organization of Casual Suite is as follows:
+
+- Casual Suite — Umbrella package
+  - [[https://github.com/kickingvegas/casual][Casual]] — Library of interfaces for built-in Emacs modes.
+  - [[https://github.com/kickingvegas/casual-avy][Casual Avy]]  — Interface for Avy (3^{rd} party)
+  - [[https://github.com/kickingvegas/casual-symbol-overlay][Casual Symbol Overlay]] — Interface for Symbol Overlay (3^{rd} party)
   
-
 * Requirements
-Casual Suite requires usage of
-- Emacs ≥ 29.1
-- Avy ≥ 0.5.0
-- Symbol Overlay ≥ 4.2  
-- Casual ≥ 2.0.0
 
-Casual Suite has been verified with the following configuration. 
-- Emacs 29.4 (macOS 14.5, Ubuntu Linux 22.04.4 LTS)
+Casual Suite requires [[https://github.com/magit/transient][Transient]] 0.9+. Versions of GNU Emacs 30.1 or greater will satisfy this requirement with its built-in version of Transient.
 
-* Asks
-As Casual Suite is new, we are looking for early adopters! Your [[https://github.com/kickingvegas/casual-suite/discussions][feedback]] is welcome as it will likely impact Casual Suite's evolution, particularly with regards to UI.
+The following 3^{rd} party packages are also required but will be installed as dependencies if not present.
+
+- [[https://github.com/abo-abo/avy][Avy]] ≥ 0.5.0
+- [[https://github.com/wolray/symbol-overlay][Symbol Overlay]] ≥ 4.2  
+
+Casual Suite has been verified with the following configuration.
+
+- GNU Emacs 31.1 (macOS 15.7, Ubuntu Linux 22.04.5 LTS)
 
 * Install
-It is highly recommended that a deep reading of the install procedure for each user interface be done beforehand as each of them have their own recommended customizations to go alongside them. Such customizations ensure that you have the best experience with each user interface.
 
-** A Note on Package Dependencies
-Casual Suite requires a recent installation of Transient 0.6.0+ from either [[https://elpa.gnu.org/packages/transient.html][ELPA]] or [[https://melpa.org/#/transient][MELPA]]. If your version of Emacs is ≤ 30 but also includes Transient as a built-in package, you will need to set the customizable variable ~package-install-upgrade-built-in~ to ~t~ to enable updating it via ~package.el~.  Set this variable and proceed with installing Casual.  Alternately invoking ~package-install~ with a prefix (~C-u~) will temporarily coerce the update of dependent built-in packages (example: ~C-u M-x package-install~ ~casual~).
-
-As Transient is closely tied to Magit, installing the latest version of Magit (via [[https://elpa.nongnu.org/nongnu/magit.html][non-GNU ELPA]] or [[https://melpa.org/#/magit][MELPA]]) before installing Casual Suite can also pick up the latest version of Transient.
-
-
-** TL;DR
-Impatient readers can use the following code to put into their Emacs initialization file to immediately use Casual Suite. 
-
-The following lines illustrate an installation of the Casual Suite with no customization. The key bindings shown below are suggested but can always be changed to preference.
+Casual Suite versions 3.0 or greater offer a simplified installation with the command ~casual-suite-init~. By default this command will setup interfaces for all supported Casual modules, both built-in modes/modules and 3^{rd} party. Run this via ~execute-execute-command~ (~M-x~) or add the following Elisp to your Emacs initialization file.
 
 #+begin_src elisp :lexical no
   (require 'casual-suite)
-  (keymap-set calc-mode-map "C-o" #'casual-calc-tmenu)
-  (keymap-set dired-mode-map "C-o" #'casual-dired-tmenu)
-  (keymap-set isearch-mode-map "C-o" #'casual-isearch-tmenu)
-  (keymap-set ibuffer-mode-map "C-o" #'casual-ibuffer-tmenu)
-  (keymap-set ibuffer-mode-map "F" #'casual-ibuffer-filter-tmenu)
-  (keymap-set ibuffer-mode-map "s" #'casual-ibuffer-sortby-tmenu)
-  (keymap-set Info-mode-map "C-o" #'casual-info-tmenu)
-  (keymap-set reb-mode-map "C-o" #'casual-re-builder-tmenu)
-  (keymap-set reb-lisp-mode-map "C-o" #'casual-re-builder-tmenu)
-  (keymap-set bookmark-bmenu-mode-map "C-o" #'casual-bookmarks-tmenu)
-  (keymap-set org-agenda-mode-map "C-o" #'casual-agenda-tmenu)
-  (keymap-global-set "M-g" #'casual-avy-tmenu)
-  (keymap-set symbol-overlay-map "C-o" #'casual-symbol-overlay-tmenu)
-  (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
+  (casual-suite-init)
 #+end_src
 
+Note that ~casual-suite-init~ will only work if Casual Suite is installed via ~package-install~.
 
+If /à la carte/ style setup of Casual modules is desired, then confer with the install instructions provided by the following packages.
+
+- [[https://kickingvegas.github.io/casual/Install.html][Casual Install]]
+- [[https://kickingvegas.github.io/casual-avy/Install.html][Casual Avy Install]]
+- [[https://kickingvegas.github.io/casual-symbol-overlay/Install.html][Casual Symbol Overlay Install]]
+  
 * Sponsorship
-If you enjoy using Casual Suite, consider making a modest financial contribution to help support its development and maintenance.
+
+If you enjoy using Casual Suite, please consider buying me a coffee to help support its development and maintenance.
 
 [[https://www.buymeacoffee.com/kickingvegas][file:docs/images/default-yellow.png]]
   
 * Acknowledgments
-A heartfelt thanks to all the contributors to Calc, Dired, Info, I-Search, Info, IBuffer, RE-Builder, Bookmarks, Avy, and [[https://github.com/magit/transient][Transient]]. Casual Suite would not be possible without your efforts.
+
+A heartfelt thanks to all the contributors to the GNU Emacs ecosystem from which Casual Suite builds from. This work would not be possible without your efforts.

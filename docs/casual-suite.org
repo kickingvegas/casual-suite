@@ -1,0 +1,144 @@
+#+startup: overview nologdone
+#+startup: showeverything
+#+TITLE: Casual Suite User Guide
+#+SUBTITLE: for version {{{version}}}
+#+AUTHOR: Charles Y. Choi
+#+EMAIL: kickingvegas@gmail.com
+#+OPTIONS: ':t toc:t author:t email:t H:4 f:t
+#+LANGUAGE: en
+#+MACRO: version 2.0.1-rc.1
+#+MACRO: kbd (eval (org-texinfo-kbd-macro $1))
+#+TEXINFO_FILENAME: casual-suite.info
+#+TEXINFO_CLASS: casual
+#+TEXINFO_HEADER: @syncodeindex pg cp
+#+TEXINFO_HEADER: @paragraphindent none
+#+TEXINFO_TITLEPAGE: t
+#+TEXINFO_DIR_CATEGORY: Emacs misc features
+#+TEXINFO_DIR_NAME: Casual Suite
+#+TEXINFO_DIR_DESC: Umbrella package for all Casual-based packages.
+#+TEXINFO_PRINTED_TITLE: Casual Suite User Guide
+
+Version: {{{version}}}
+
+#+TEXINFO: Copyright © 2026 @w{Charles Y. Choi}
+
+Casual Suite is an umbrella package to support a single installation point for all Casual user interfaces for Emacs. This is accomplished by including child packages as dependencies via the Elisp library header ~Package-Requires~ ([[info:elisp#Library Headers][elisp#Library Headers]])
+
+The organization of Casual Suite is as follows:
+
+- Casual Suite — Umbrella package
+  
+  - Casual ([[info:casual#Top]]) — Library of interfaces for built-in Emacs modes.
+    
+  - Casual Avy ([[info:casual-avy#Top]]) — Interface for Avy (third party)
+    
+  - Casual Symbol Overlay ([[info:casual-symbol-overlay#Top]]) — Interface for Symbol Overlay (third party)
+
+    
+#+INCLUDE: "./sponsorship.org"
+
+* Copying
+:PROPERTIES:
+:COPYING: t
+:END:
+
+Copyright © 2026 Charles Y. Choi
+
+* Features
+:PROPERTIES:
+:CUSTOM_ID: features
+:END:
+#+CINDEX: Features
+
+- "One step" install of all Casual packages:
+
+  - Casual
+  - Casual Avy
+  - Casual Symbol Overlay
+
+- Automatic updates for future supported third party packages.
+  
+
+* Requirements
+:PROPERTIES:
+:CUSTOM_ID: requirements
+:END:
+#+CINDEX: Requirements
+
+Casual Suite requires [[https://github.com/magit/transient][Transient]] 0.9+. Versions of GNU Emacs 30.1 or greater will satisfy this requirement with its built-in version of Transient.
+
+The following third party packages are also required but will be installed as dependencies if not present.
+
+- [[https://github.com/abo-abo/avy][Avy]] ≥ 0.5.0
+
+- [[https://github.com/wolray/symbol-overlay][Symbol Overlay]] ≥ 4.2  
+
+Casual Suite has been verified with the following configuration.
+
+- GNU Emacs 31.1 (macOS 15.7, Ubuntu Linux 22.04.5 LTS)
+
+* Install
+:PROPERTIES:
+:CUSTOM_ID: install
+:END:
+#+CINDEX: Install
+#+VINDEX: casual-suite-init
+#+VINDEX: casual-suite
+#+VINDEX: package-install
+
+Casual Suite versions 3.0 or greater offer a simplified installation with the command ~casual-suite-init~. By default this command will setup interfaces for all supported Casual modules, both built-in modes/modules and third party. Run this via ~execute-execute-command~ (~M-x~) or add the following Elisp to your Emacs initialization file.
+
+#+begin_src elisp :lexical no
+  (require 'casual-suite)
+  (casual-suite-init)
+#+end_src
+
+Note that ~casual-suite-init~ will only work if Casual Suite is installed via ~package-install~.
+
+If /à la carte/ style setup of Casual modules is desired, then confer with the install instructions provided by the following packages.
+
+- [[info:casual#Install][Casual Install]]
+  
+- [[info:casual-avy#Install][Casual Avy Install]]
+  
+- [[info:casual-symbol-overlay#Install][Casual Symbol Overlay Install]]
+
+
+* Feedback & Discussion
+#+CINDEX: Feedback
+Please report any feedback about *Casual Suite* to the [[https://github.com/kickingvegas/casual-suite/issues][issue tracker on GitHub]].
+
+#+CINDEX: Discussion
+To participate in general discussion about using *Casual Suite*, please join the [[https://github.com/kickingvegas/casual-suite/discussions][discussion group]].
+
+* Sponsorship
+#+CINDEX: Sponsorship
+
+#+INCLUDE: "./sponsorship.org"
+
+
+* About
+#+CINDEX: About
+
+[[https://github.com/kickingvegas/casual-suite][Casual Suite]] was conceived and crafted by Charles Choi in San Francisco, California.
+
+Thank you for using *Casual Suite*.
+
+Always choose love.
+
+* Acknowledgments
+#+CINDEX: Acknowledgments
+
+* Main Index
+:PROPERTIES:
+:INDEX:    cp
+:END:
+
+Index for this user guide.
+
+* Variable Index
+:PROPERTIES:
+:INDEX:    vr
+:END:
+
+Variables, functions, commands, and menus referenced by this user guide.
