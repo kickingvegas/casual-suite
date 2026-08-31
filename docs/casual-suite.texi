@@ -14,7 +14,7 @@ Copyright © 2026 Charles Y@. Choi
 
 @dircategory Emacs misc features
 @direntry
-* casual-suite: (casual-suite). Casual Suite is a.
+* Casual Suite: (casual-suite). Umbrella package for all Casual-based packages.
 @end direntry
 
 @finalout
@@ -37,10 +37,28 @@ Version: 2.0.1-rc.1
 
 Copyright © 2026 @w{Charles Y. Choi}
 
-Hey talk about Casual Suite here.
+Casual Suite is an umbrella package to support a single installation point for all Casual user interfaces for Emacs. This is accomplished by including child packages as dependencies via the Elisp library header @code{Package-Requires} (@ref{Library Headers,elisp#Library Headers,,elisp,})
+
+The organization of Casual Suite is as follows:
+
+@itemize
+@item
+Casual Suite — Umbrella package
+
+@itemize
+@item
+Casual (@ref{Top,,,casual,}) — Library of interfaces for built-in Emacs modes.
+
+@item
+Casual Avy (@ref{Top,,,casual-avy,}) — Interface for Avy (third party)
+
+@item
+Casual Symbol Overlay (@ref{Top,,,casual-symbol-overlay,}) — Interface for Symbol Overlay (third party)
+@end itemize
+@end itemize
 
 
-If you enjoy using Casual Suite, please buy me a coffee to help support its development and maintenance.
+If you enjoy using Casual Suite@comma{} please consider buying me a coffee to help support its development and maintenance.
 
 @image{images/default-yellow,,,,png}
 
@@ -52,7 +70,6 @@ If you enjoy using Casual Suite, please buy me a coffee to help support its deve
 * Features::
 * Requirements::
 * Install::
-* Commands::
 * Feedback & Discussion::
 * Sponsorship::
 * About::
@@ -66,44 +83,92 @@ If you enjoy using Casual Suite, please buy me a coffee to help support its deve
 
 @cindex Features
 
-TBD
+@itemize
+@item
+``One step'' install of all Casual packages:
+
+@itemize
+@item
+Casual
+@item
+Casual Avy
+@item
+Casual Symbol Overlay
+@end itemize
+
+@item
+Automatic updates for future supported third party packages.
+@end itemize
 
 @node Requirements
 @chapter Requirements
 
 @cindex Requirements
 
-TBD
+Casual Suite requires @uref{https://github.com/magit/transient, Transient} 0.9+. Versions of GNU Emacs 30.1 or greater will satisfy this requirement with its built-in version of Transient.
 
-@strong{now-playing.el} requires GNU Emacs 30.1+ running on macOS 13 (Ventura) or greater.  NS support is recommended for optimal performance.
+The following third party packages are also required but will be installed as dependencies if not present.
+
+@itemize
+@item
+@uref{https://github.com/abo-abo/avy, Avy} ≥ 0.5.0
+
+@item
+@uref{https://github.com/wolray/symbol-overlay, Symbol Overlay} ≥ 4.2  
+@end itemize
+
+Casual Suite has been verified with the following configuration.
+
+@itemize
+@item
+GNU Emacs 31.1 (macOS 15.7@comma{} Ubuntu Linux 22.04.5 LTS)
+@end itemize
 
 @node Install
 @chapter Install
 
 @cindex Install
+@vindex casual-suite-init
+@vindex casual-suite
+@vindex package-install
 
-TBD
+Casual Suite versions 3.0 or greater offer a simplified installation with the command @code{casual-suite-init}. By default this command will setup interfaces for all supported Casual modules@comma{} both built-in modes/modules and third party. Run this via @code{execute-execute-command} (@code{M-x}) or add the following Elisp to your Emacs initialization file.
 
-@node Commands
-@chapter Commands
+@lisp
+(require 'casual-suite)
+(casual-suite-init)
+@end lisp
 
-@cindex Commands
+Note that @code{casual-suite-init} will only work if Casual Suite is installed via @code{package-install}.
+
+If @emph{à la carte} style setup of Casual modules is desired@comma{} then confer with the install instructions provided by the following packages.
+
+@itemize
+@item
+@ref{Install,Casual Install,,casual,}
+
+@item
+@ref{Install,Casual Avy Install,,casual-avy,}
+
+@item
+@ref{Install,Casual Symbol Overlay Install,,casual-symbol-overlay,}
+@end itemize
 
 @node Feedback & Discussion
 @chapter Feedback & Discussion
 
 @cindex Feedback
-Please report any feedback about @strong{now-playing.el} to the @uref{https://github.com/kickingvegas/now-playing/issues, issue tracker on GitHub}.
+Please report any feedback about @strong{Casual Suite} to the @uref{https://github.com/kickingvegas/casual-suite/issues, issue tracker on GitHub}.
 
 @cindex Discussion
-To participate in general discussion about using @strong{now-playing.el}, please join the @uref{https://github.com/kickingvegas/now-playing/discussions, discussion group}.
+To participate in general discussion about using @strong{Casual Suite}@comma{} please join the @uref{https://github.com/kickingvegas/casual-suite/discussions, discussion group}.
 
 @node Sponsorship
 @chapter Sponsorship
 
 @cindex Sponsorship
 
-If you enjoy using Casual Suite, please buy me a coffee to help support its development and maintenance.
+If you enjoy using Casual Suite@comma{} please consider buying me a coffee to help support its development and maintenance.
 
 @image{images/default-yellow,,,,png}
 
@@ -114,9 +179,9 @@ If you enjoy using Casual Suite, please buy me a coffee to help support its deve
 
 @cindex About
 
-@uref{https://github.com/kickingvegas/now-playing, now-playing.el} was conceived and crafted by Charles Choi in San Francisco, California.
+@uref{https://github.com/kickingvegas/casual-suite, Casual Suite} was conceived and crafted by Charles Choi in San Francisco@comma{} California.
 
-Thank you for using @strong{now-playing.el}.
+Thank you for using @strong{Casual Suite}.
 
 Always choose love.
 
@@ -135,7 +200,7 @@ Index for this user guide.
 @node Variable Index
 @chapter Variable Index
 
-Variables, functions, commands, and menus referenced by this user guide.
+Variables@comma{} functions@comma{} commands@comma{} and menus referenced by this user guide.
 
 @printindex vr
 
